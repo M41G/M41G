@@ -1,0 +1,90 @@
+<svg width="1200" height="205" viewBox="0 0 1200 205" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Michael Gordon | M41G</title>
+  <desc id="desc">Systems, Security, Scripting, and Mod Tooling</desc>
+  <defs>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#1b2230"/>
+    </pattern>
+    <linearGradient id="edge" x1="0" y1="0" x2="1200" y2="205" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172033"/>
+      <stop offset="0.5" stop-color="#262038"/>
+      <stop offset="1" stop-color="#16303a"/>
+    </linearGradient>
+    <clipPath id="michael-clip" clipPathUnits="userSpaceOnUse">
+      <rect x="449" y="88" width="0" height="44">
+        <animate attributeName="width"
+          values="0;22;43;65;86;108;129;151;173;194;216;237;259;280;302;302;280;259;237;216;194;173;151;129;108;86;65;43;22;0;0"
+          keyTimes="0;0.01;0.021;0.031;0.042;0.052;0.063;0.073;0.084;0.094;0.105;0.115;0.126;0.136;0.147;0.48;0.487;0.493;0.5;0.507;0.513;0.52;0.527;0.533;0.54;0.547;0.553;0.56;0.567;0.573;1"
+          calcMode="discrete"
+          dur="15s"
+          repeatCount="indefinite"/>
+      </rect>
+    </clipPath>
+    <clipPath id="m41g-clip" clipPathUnits="userSpaceOnUse">
+      <rect x="557" y="88" width="0" height="44">
+        <animate attributeName="width"
+          values="0;0;22;43;65;86;86;65;43;22;0;0"
+          keyTimes="0;0.573;0.583;0.593;0.603;0.613;0.947;0.957;0.967;0.977;0.987;1"
+          calcMode="discrete"
+          dur="15s"
+          repeatCount="indefinite"/>
+      </rect>
+    </clipPath>
+  </defs>
+
+  <rect x="1" y="1" width="1198" height="203" rx="12" fill="#0c0d12" stroke="url(#edge)" stroke-width="2"/>
+  <rect x="1" y="1" width="1198" height="203" rx="12" fill="url(#grid)" opacity="0.85"/>
+
+  <g id="typed-name">
+    <text x="449" y="122" clip-path="url(#michael-clip)" fill="#f0f2f7" font-family="Consolas, 'SFMono-Regular', 'Liberation Mono', monospace" font-size="36" font-weight="700" textLength="302" lengthAdjust="spacingAndGlyphs">Michael Gordon</text>
+    <text x="557" y="122" clip-path="url(#m41g-clip)" fill="#4ea8c0" font-family="Consolas, 'SFMono-Regular', 'Liberation Mono', monospace" font-size="36" font-weight="700" textLength="86" lengthAdjust="spacingAndGlyphs">M41G</text>
+
+    <rect x="449" y="92" width="11" height="35" rx="2" fill="#4ea8c0" opacity="0.9">
+      <animate attributeName="x"
+        values="449;471;492;514;535;557;578;600;622;643;665;686;708;729;751;751;729;708;686;665;643;622;600;578;557;535;514;492;471;557;579;600;622;643;643;622;600;579;557;557"
+        keyTimes="0;0.01;0.021;0.031;0.042;0.052;0.063;0.073;0.084;0.094;0.105;0.115;0.126;0.136;0.147;0.48;0.487;0.493;0.5;0.507;0.513;0.52;0.527;0.533;0.54;0.547;0.553;0.56;0.567;0.573;0.583;0.593;0.603;0.613;0.947;0.957;0.967;0.977;0.987;1"
+        calcMode="discrete"
+        dur="15s"
+        repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.9;0;0;0.9" dur="1.15s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <text x="600" y="158" text-anchor="middle" fill="#8a8aa0" font-family="Consolas, 'SFMono-Regular', 'Liberation Mono', monospace" font-size="14" letter-spacing="7">SYSTEMS  SECURITY  SCRIPTING</text>
+
+  <g transform="translate(353 175)">
+    <rect width="78" height="22" rx="5" fill="#10131c" stroke="#242a38"/>
+    <circle cx="19" cy="11" r="4" fill="#239120">
+      <animate attributeName="opacity" values="1;0.35;1" dur="2.4s" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <text x="32" y="11.5" dominant-baseline="middle" fill="#b9bdca" font-family="Consolas, 'SFMono-Regular', 'Liberation Mono', monospace" font-size="14">C#</text>
+  </g>
+  <g transform="translate(441 175)">
+    <rect width="90" height="22" rx="5" fill="#10131c" stroke="#242a38"/>
+    <circle cx="19" cy="11" r="4" fill="#4b8d46">
+      <animate attributeName="opacity" values="1;0.35;1" dur="2.4s" begin="0.2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="32" y="11.5" dominant-baseline="middle" fill="#b9bdca" font-family="Consolas, 'SFMono-Regular', 'Liberation Mono', monospace" font-size="14">Shell</text>
+  </g>
+  <g transform="translate(541 175)">
+    <rect width="82" height="22" rx="5" fill="#10131c" stroke="#242a38"/>
+    <circle cx="19" cy="11" r="4" fill="#c98220">
+      <animate attributeName="opacity" values="1;0.35;1" dur="2.4s" begin="0.4s" repeatCount="indefinite"/>
+    </circle>
+    <text x="32" y="11.5" dominant-baseline="middle" fill="#b9bdca" font-family="Consolas, 'SFMono-Regular', 'Liberation Mono', monospace" font-size="14">Java</text>
+  </g>
+  <g transform="translate(633 175)">
+    <rect width="124" height="22" rx="5" fill="#10131c" stroke="#242a38"/>
+    <circle cx="19" cy="11" r="4" fill="#c7a922">
+      <animate attributeName="opacity" values="1;0.35;1" dur="2.4s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <text x="32" y="11.5" dominant-baseline="middle" fill="#b9bdca" font-family="Consolas, 'SFMono-Regular', 'Liberation Mono', monospace" font-size="14">JavaScript</text>
+  </g>
+  <g transform="translate(767 175)">
+    <rect width="80" height="22" rx="5" fill="#10131c" stroke="#242a38"/>
+    <circle cx="19" cy="11" r="4" fill="#2c62b8">
+      <animate attributeName="opacity" values="1;0.35;1" dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
+    </circle>
+    <text x="32" y="11.5" dominant-baseline="middle" fill="#b9bdca" font-family="Consolas, 'SFMono-Regular', 'Liberation Mono', monospace" font-size="14">C++</text>
+  </g>
+</svg>
