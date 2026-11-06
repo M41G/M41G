@@ -1,0 +1,308 @@
+<title>NCO Creed</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+
+<style>
+/* Layout: full-width sticky bar + centered column */
+:root {
+  --bg: #f4f0e8;
+  --fg: #1c1810;
+  --muted: #7a7060;
+  --accent: #b8902a;
+  --hl: rgba(184,144,42,0.22);
+  --bar: #eae6d9;
+  --rule: rgba(0,0,0,0.1);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111008;
+    --fg: #e8e0cc;
+    --muted: #9a9080;
+    --accent: #c9a84c;
+    --hl: rgba(201,168,76,0.22);
+    --bar: #1b1912;
+    --rule: rgba(255,255,255,0.09);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111008;
+  --fg: #e8e0cc;
+  --muted: #9a9080;
+  --accent: #c9a84c;
+  --hl: rgba(201,168,76,0.22);
+  --bar: #1b1912;
+  --rule: rgba(255,255,255,0.09);
+  color-scheme: dark;
+}
+
+*,*::before,*::after { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.82;
+  margin: 0;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--bar);
+  z-index: 11;
+}
+
+#playbar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  background: var(--bar);
+  border-top: 2px solid var(--accent);
+  border-bottom: 1px solid var(--rule);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px max(20px, env(safe-area-inset-right, 0px)) 9px max(20px, env(safe-area-inset-left, 0px));
+}
+
+#loader-label {
+  display: contents;
+}
+#loader-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  background: transparent;
+  border-radius: 3px;
+  padding: 5px 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+#loader-btn:hover { background: var(--hl); }
+
+#controls {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+#controls.on { display: flex; }
+
+#play-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--fg);
+  display: flex;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+#play-btn:hover { background: var(--hl); }
+#play-btn svg { width: 22px; height: 22px; fill: currentColor; display: block; }
+
+#prog {
+  flex: 1;
+  height: 3px;
+  appearance: none;
+  background: var(--rule);
+  border-radius: 2px;
+  cursor: pointer;
+  min-width: 0;
+  accent-color: var(--accent);
+}
+#prog::-webkit-slider-thumb {
+  appearance: none;
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+#prog::-moz-range-thumb {
+  border: none;
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+#timer {
+  font-size: 12px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+  padding-block: 56px 80px;
+}
+
+header { text-align: center; margin-bottom: 44px; }
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(30px, 6vw, 48px);
+  font-weight: 600;
+  margin: 0 0 10px;
+  letter-spacing: 0.04em;
+  text-wrap: balance;
+}
+.sub {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 40px 0;
+}
+.para {
+  text-align: justify;
+  hyphens: auto;
+  margin-bottom: 32px;
+}
+.para:last-child { margin-bottom: 0; }
+
+.word {
+  border-radius: 3px;
+  padding: 1px 3px;
+  margin: -1px -3px;
+  transition: background-color 0.1s ease;
+}
+.word.on { background-color: var(--hl); }
+</style>
+
+<div id="playbar">
+  <label id="loader-label">
+    <button id="loader-btn" type="button" onclick="document.getElementById('fi').click()">Load Audio</button>
+    <input id="fi" type="file" accept="audio/*,video/*" style="display:none">
+  </label>
+  <div id="controls">
+    <button id="play-btn" aria-label="Play / Pause">
+      <svg id="i-play" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9z"/></svg>
+      <svg id="i-pause" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+    </button>
+    <input id="prog" type="range" min="0" max="100" value="0" step="0.01">
+    <span id="timer">0:00</span>
+  </div>
+  <audio id="audio"></audio>
+</div>
+
+<main>
+  <header>
+    <h1>NCO Creed</h1>
+    <p class="sub">Noncommissioned Officers Creed &middot; United States Army</p>
+  </header>
+  <hr>
+  <div class="para" id="p1"></div>
+  <div class="para">Competence is my watchword. My two basic responsibilities will always be uppermost in my mind &#8212; accomplishment of my mission and the welfare of my soldiers. I will strive to remain technically and tactically proficient. I am aware of my role as a Noncommissioned Officer. I will fulfill my responsibilities inherent in that role. All soldiers are entitled to outstanding leadership; I will provide that leadership. I know my soldiers and I will always place their needs above my own. I will communicate consistently with my soldiers and never leave them uninformed. I will be fair and impartial when recommending both rewards and punishment.</div>
+  <div class="para">Officers of my unit will have maximum time to accomplish their duties; they will not have to accomplish mine. I will earn their respect and confidence as well as that of my soldiers. I will be loyal to those with whom I serve; seniors, peers, and subordinates alike. I will exercise initiative by taking appropriate action in the absence of orders. I will not compromise my integrity, nor my moral courage. I will not forget, nor will I allow my comrades to forget that we are professionals, Noncommissioned Officers, leaders!</div>
+</main>
+
+<script>
+// Para 1 word timings (seconds) — estimated for 36s audio; adjust offset if needed
+const W = [
+  ["No",0.4],["one",0.7],["is",1.0],["more",1.3],["professional",1.7],["than",2.2],["I.",2.6],
+  ["I",3.3],["am",3.6],["a",3.9],["Noncommissioned",4.2],["Officer,",4.9],["a",5.5],["leader",5.8],["of",6.1],["soldiers.",6.4],
+  ["As",7.3],["a",7.6],["Noncommissioned",7.9],["Officer,",8.6],
+  ["I",9.3],["realize",9.6],["that",10.0],["I",10.3],["am",10.5],["a",10.7],["member",10.9],["of",11.2],["a",11.4],
+  ["time",11.6],["honored",11.9],["corps,",12.3],["which",12.8],["is",13.1],["known",13.3],["as",13.6],
+  ["“The",13.9],["Backbone",14.2],["of",14.6],["the",14.8],["Army”.",15.0],
+  ["I",15.9],["am",16.2],["proud",16.5],["of",16.8],["the",17.0],["Corps",17.2],["of",17.5],
+  ["Noncommissioned",17.8],["Officers",18.5],["and",18.9],["will",19.1],["at",19.3],["all",19.5],["times",19.7],
+  ["conduct",20.0],["myself",20.4],["so",20.8],["as",21.0],["to",21.2],["bring",21.4],["credit",21.7],
+  ["upon",22.1],["the",22.4],["Corps,",22.6],["the",23.0],["Military",23.2],["Service",23.6],["and",24.0],
+  ["my",24.2],["country",24.4],["regardless",24.8],["of",25.3],["the",25.5],["situation",25.7],
+  ["in",26.2],["which",26.4],["I",26.7],["find",26.9],["myself.",27.2],
+  ["I",28.0],["will",28.3],["not",28.5],["use",28.7],["my",28.9],["grade",29.2],["or",29.5],
+  ["position",29.7],["to",30.1],["attain",30.3],["pleasure,",30.7],["profit,",31.3],["or",31.9],
+  ["personal",32.2],["safety.",32.6]
+];
+
+const p1 = document.getElementById('p1');
+const spans = W.map(([w, t], i) => {
+  if (i > 0) p1.appendChild(document.createTextNode(' '));
+  const s = document.createElement('span');
+  s.className = 'word';
+  s.dataset.t = t;
+  s.textContent = w;
+  p1.appendChild(s);
+  return s;
+});
+
+const audio = document.getElementById('audio');
+const fi    = document.getElementById('fi');
+const ctl   = document.getElementById('controls');
+const lbl   = document.getElementById('loader-label');
+const pbtn  = document.getElementById('play-btn');
+const iPlay = document.getElementById('i-play');
+const iPause= document.getElementById('i-pause');
+const prog  = document.getElementById('prog');
+const timer = document.getElementById('timer');
+
+let cur = -1;
+const fmt = s => `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
+
+function activate(n) {
+  if (cur >= 0) spans[cur].classList.remove('on');
+  if (n >= 0) spans[n].classList.add('on');
+  cur = n;
+}
+
+fi.addEventListener('change', e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  audio.src = URL.createObjectURL(f);
+  lbl.hidden = true;
+  ctl.classList.add('on');
+});
+
+pbtn.addEventListener('click', () => audio.paused ? audio.play() : audio.pause());
+
+audio.addEventListener('play',  () => { iPlay.style.display='none'; iPause.style.display=''; });
+audio.addEventListener('pause', () => { iPlay.style.display=''; iPause.style.display='none'; });
+audio.addEventListener('ended', () => { iPlay.style.display=''; iPause.style.display='none'; activate(-1); });
+
+audio.addEventListener('loadedmetadata', () => {
+  prog.max = audio.duration;
+  timer.textContent = '0:00 / ' + fmt(audio.duration);
+});
+
+audio.addEventListener('timeupdate', () => {
+  const t = audio.currentTime;
+  prog.value = t;
+  timer.textContent = fmt(t) + (audio.duration ? ' / ' + fmt(audio.duration) : '');
+  let n = -1;
+  for (let i = spans.length - 1; i >= 0; i--) {
+    if (+spans[i].dataset.t <= t) { n = i; break; }
+  }
+  if (n !== cur) activate(n);
+});
+
+prog.addEventListener('input', () => { audio.currentTime = +prog.value; activate(-1); });
+
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space' && e.target === document.body && audio.src) {
+    e.preventDefault();
+    audio.paused ? audio.play() : audio.pause();
+  }
+});
+</script>
